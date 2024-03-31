@@ -1,0 +1,26 @@
+﻿@model IEnumerable<DAL.Student>
+
+@Html.ActionLink("Add", "Create", "Home", null, new {@class = "btn btn-primary"})
+<br /><br />
+<table class="table">
+    <thead class="table-dark">
+            <th>Name</th>
+            <th>Address</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Name</td>   
+                <td>@item.Address</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Home",new {id = item.Id}, new { @class = "btn btn-primary" })
+                    &nbsp;&nbsp;
+                    @Html.ActionLink("Delete", "Delete", "Home", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you want to delete this item?');" })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
